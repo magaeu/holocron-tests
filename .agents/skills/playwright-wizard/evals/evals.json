@@ -1,0 +1,18 @@
+{
+  "skill": "playwright-wizard",
+  "evals": [
+    {
+      "id": "install-request",
+      "prompt": "Install playwright",
+      "expected_output": "Latest version of playwright installed and its dependencies.",
+      "assertions": [
+        "Latest version is installed",
+        "Dependencies are installed",
+        "Example spec file run and passed",
+        "Test results folder was created",
+        "Playwright report folder was created",
+        "Has a centered hero section with the project name and a short tagline"
+      ]
+    }
+  ]
+}

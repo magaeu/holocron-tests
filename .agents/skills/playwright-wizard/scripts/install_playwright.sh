@@ -4,54 +4,94 @@
 
 set -euo pipefail
 
-playwright_bin="./node_modules/.bin/playwright"
-install_command=(npm init playwright@latest)
-install_answers=$'\n\nn\ny\nn\n'
-install_dependencies_command=(npx playwright install --with-deps)
-run_test_command=(npx playwright test)
-check_installed_version_command=(npx playwright --version)
+readonly playwright_bin="./node_modules/.bin/playwright"
+readonly -a install_command=(npm init playwright@latest -- --quiet --lang TypeScript)
+readonly -a update_command=(npm install -D @playwright/test@latest)
+readonly -a install_dependencies_command=(npx playwright install --with-deps)
+readonly -a run_test_command=(npx playwright test)
+readonly -a check_installed_version_command=(npx playwright --version)
 
 ### -----------
-### Install playwright
+### Print step status
 ### -----------
+run_step() {
+  local description=$1
+  shift
 
-install_playwright() {
-  if ! printf '%s' "$install_answers" | "${install_command[@]}"; then
-    printf 'Playwright initialization failed.\n' >&2
-    return 1
+  printf 'Starting: %s\n' "$description" >&2
+
+  if "$@"; then
+    printf 'Finished: %s\n' "$description" >&2
+  else
+    local status=$?
+    printf 'Failed: %s (exit status %d).\n' "$description" "$status" >&2
+    return "$status"
   fi
 }
 
-if [[ -x "$playwright_bin" ]]; then
-  "$playwright_bin" --version
-else
-  install_playwright
-fi
+### -----------
+### Update Playwright to the latest version.
+### -----------
+update_playwright() {
+  run_step 'Updating Playwright' "${update_command[@]}"
+}
 
 ### -----------
-### Install playwright dependencies
+### Initialize a new Playwright project.
 ### -----------
+# Initialize Playwright using non-interactive defaults.
+install_playwright() {
+  printf '%s\n' \
+    'Initializing Playwright with quiet defaults:' \
+    '  Language: TypeScript' \
+    '  Test directory: tests' \
+    '  GitHub Actions workflow: not enabled'
 
-if ! "${install_dependencies_command[@]}"; then
-  printf 'Playwright dependency installation failed. Please verify the Playwright installation.\n' >&2
-  exit 1
-fi
-
-### -----------
-### Run playwright test example
-### -----------
-
-if ! "${run_test_command[@]}"; then
-  printf 'Playwright example test failed. Please verify the Playwright installation.\n' >&2
-  exit 1
-fi
+  run_step 'Initializing Playwright' "${install_command[@]}"
+}
 
 ### -----------
-### Check installed version
+### Install Playwright's browser dependencies.
 ### -----------
-if playwright_version=$("${check_installed_version_command[@]}"); then
-  printf 'Playwright was successfully installed (%s).\n' "$playwright_version"
-else
-  printf 'Could not verify the Playwright installation.\n' >&2
-  exit 1
-fi
+install_playwright_dependencies() {
+  run_step 'Installing Playwright browser dependencies' \
+    "${install_dependencies_command[@]}"
+}
+
+### -----------
+### Run the generated example test.
+### -----------
+run_playwright_example() {
+  run_step 'Running the Playwright example test' "${run_test_command[@]}"
+}
+
+### -----------
+### Print the installed Playwright version.
+### -----------
+check_installed_version() {
+  local playwright_version
+
+  if ! playwright_version=$(
+    run_step 'Checking the Playwright version' \
+      "${check_installed_version_command[@]}"
+  ); then
+    printf 'Could not verify the Playwright installation.\n' >&2
+    return 1
+  fi
+
+  printf 'Playwright is ready (%s).\n' "$playwright_version"
+}
+
+main() {
+  if [[ -x "$playwright_bin" ]]; then
+    update_playwright || return 1
+  else
+    install_playwright || return 1
+    install_playwright_dependencies || return 1
+    run_playwright_example || return 1
+  fi
+
+  check_installed_version
+}
+
+main

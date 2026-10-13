@@ -13,11 +13,11 @@ Create or improve playwright project structure
 ### 1. Install playwright and its dependencies
 
 Run `scripts/install_playwright.sh` to setup playwright:
-Install playwright and its dependencies and initializes new project or adds playwright to it
 - **Playwright** installation (latest stable version)
 - **Dependencies** (browsers)
 - Initialize playwright
 - Check initial playwright example
+- Update playwright to latest version in case is already installed
 
 <!-- ### 2. Read the best practices guide
 

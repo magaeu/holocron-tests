@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "readme-wizard": {
+      "source": "debs-obrien/learn-agent-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/readme-wizard/SKILL.md",
+      "computedHash": "ae787bd4f612fcd1bfa1a3a8337c6c3976de9b99fef61922891f12799d6bfd41"
+    }
+  }
+}

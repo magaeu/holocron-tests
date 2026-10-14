@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "resolveJsonModule": true,
+        "target": "ES2024",
+        "jsx": "react-jsx",
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strict": true,
+        "noEmit": true,
+        "sourceMap": false,
+        "types": [
+            "node",
+            "@playwright/test"
+        ],
+        "paths": {
+            "@fixtures/*": [
+                "./src/fixtures/*"
+            ],
+            "@tests/*": [
+                "./src/tests/*"
+            ],
+            "@types/*": [
+                "./src/types/*"
+            ],
+            "@utils/*": [
+                "./src/utils/*"
+            ]
+        }
+    },
+    "include": [
+        "*.ts",
+        "*.mts",
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*",
+        "dist",
+        "playwright-report",
+        "test-results",
+        "src/test-data"
+    ]
+}

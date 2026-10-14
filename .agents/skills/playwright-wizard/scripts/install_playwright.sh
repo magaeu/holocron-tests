@@ -39,7 +39,6 @@ update_playwright() {
 ### -----------
 ### Initialize a new Playwright project.
 ### -----------
-# Initialize Playwright using non-interactive defaults.
 install_playwright() {
   printf '%s\n' \
     'Initializing Playwright with quiet defaults:' \

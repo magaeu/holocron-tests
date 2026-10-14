@@ -19,23 +19,35 @@ Run `scripts/install_playwright.sh` to setup playwright:
 - Check initial playwright example
 - Update playwright to latest version in case is already installed
 
-<!-- ### 2. Read the best practices guide
+Review the installation in `evals/evals.json` `install-request`.
 
-Read `references/readme-best-practices.md` before writing. It covers structure, tone, project-type adaptation, and common pitfalls. This context makes a real difference in output quality — the guide explains the reasoning behind each section so you produce READMEs that feel intentional rather than formulaic.
+### 2. Create project structure based on test type
 
-### 3. Build the README
+Run `scripts/create_project_structure.sh`:
+- Prompts for UI, REST API, or both.
+- Creates the common `src/fixtures`, `src/tests`, and `src/utils` directories.
+- Creates `src/pages` and `src/components` for UI testing, and `src/api` for REST API testing.
+- Creates `playwright.config.ts`, `tsconfig.json`, `.env.example`, and `package.json` only when they do not already exist.
+- Accepts an optional project-root path; defaults to the current directory.
 
-Use `assets/readme-template.md` as the base structure. Replace `{{PLACEHOLDER}}` markers with actual project data from the scan.
+Read `assets/project-structure-template.md` to confirm that the correct project structure based on test type was created.
 
-When rendering the project tree, keep it close to how people browse repos: list directories before files, alphabetize within each group, and add trailing `/` markers for directories.
+**Golden rule:** Do not create any extra folder or file after review `assets/project-structure-template.md`.
 
-**Adapt — don't copy blindly.** The template is a starting point. Drop sections that don't apply (e.g., no Contributing section for a personal notes repo) and adjust the tone to match the project:
-- **Libraries/frameworks**: Focus on installation, API, and examples
-- **Applications**: Focus on setup, configuration, and screenshots
-- **Docs/learning repos**: Focus on structure and navigation
-- **Small utilities/scripts**: Keep it short — hero + what it does + usage is enough
+Review the installation in `evals/evals.json` `create-structure-request`.
 
-### 4. Add badges
+<!-- ### 3. Check example test with project structure
+
+Copy `example.spec.ts` file to `src/tests/` directory
+Remove `tests/` directory.
+Run `example.spec.ts` to check playwright project structure
+
+### 4. Create scafolding files based on test type
+
+Run `scripts/create_scafolding_files.sh`:
+- Create scafolding base files with simple sintax.
+
+ ### 4. Add badges
 
 Read `assets/badges.json` for the full badge catalog organized by category (status, social, extras) with `{{PLACEHOLDER}}` markers for dynamic values. Use `style=for-the-badge` for all badges.
 

@@ -6,26 +6,39 @@
       "prompt": "Install playwright",
       "expected_output": "Latest version of playwright installed and its dependencies.",
       "assertions": [
-        "Latest version is installed",
-        "Dependencies are installed",
-        "Example spec file run and passed",
-        "Test results folder was created",
-        "Playwright report folder was created",
-        "Has a centered hero section with the project name and a short tagline"
+        "Latest playwright version is installed",
+        "Playwright dependencies are installed",
+        "Example spec file (tests/example.spec.ts) run and passed",
+        "Test results (test-results) folder was created",
+        "Playwright report (playwright-report) folder was created",
+        "Typescript is installed",
+        "package.json has @playwright/test, @types/node and typescript dependencies"
       ]
     },
     {
       "id": "create-structure-request",
-      "prompt": "Create sctructure for playwright project",
+      "prompt": "Create structure for playwright project",
       "expected_output": "Folders and files for scalable structure",
       "assertions": [
         "playwright is installed",
-        "src folder is created",
+        "src (src) folder is created",
         "common folders are created (fixtures, tests and utils)",
         "pages and components folders are created in case UI project",
         "api folder is created in case API project",
         "pages, components and api folders are created in case UI and API project",
-        "tsconfig, .env.example, playwright.config.ts and tsconfig.json files are created"
+        "package.json, playwright.config.ts and tsconfig.json files are created",
+        "only folders related to task were created"
+      ]
+    },
+    {
+      "id": "setup-env-var-request",
+      "prompt": "Setup environment variables for the project",
+      "expected_output": ".env.example file created and playwright config updated",
+      "assertions": [
+        ".env.example file is created",
+        "playwright.config.ts is updated with config use",
+        "package.json has dotenv and @type/dotenv dependencies",
+        "only files related to task were created"
       ]
     }
   ]

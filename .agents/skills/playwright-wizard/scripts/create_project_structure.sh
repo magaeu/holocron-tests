@@ -138,19 +138,17 @@ copy_template_if_missing() {
 }
 
 ### -----------
-### Create project files: playwright config, tsconfig, .env, package.json
+### Create project files: playwright config, tsconfig, package.json
 ### -----------
 create_project_files() {
   local -a templates=(
     "playwright.config.ts.template"
     "tsconfig.json.template"
-    ".env.example.template"
     "package.json.template"
   )
   local -a destinations=(
     "playwright.config.ts"
     "tsconfig.json"
-    ".env.example"
     "package.json"
   )
   local index

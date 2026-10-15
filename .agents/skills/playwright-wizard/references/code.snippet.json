@@ -1,0 +1,16 @@
+{
+    "dotenv": {
+        "scope": "typescript",
+        "body": [
+            "import dotenv from 'dotenv';",
+            "const environmentPath = process.env.ENVIRONMENT",
+            "    ? `./env/.env.${process.env.ENVIRONMENT}`",
+            "    : `./env/.env.dev`;",
+            "dotenv.config({",
+            "   path: environmentPath,",
+            "});",
+            "baseURL = process.env.URL || 'http://localhost:3000'"
+        ],
+        "description": "Import and use dotenv"
+    }
+}

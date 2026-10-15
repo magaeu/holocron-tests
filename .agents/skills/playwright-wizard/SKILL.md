@@ -10,6 +10,8 @@ Create or improve playwright project structure
 
 ## Workflow
 
+**Golden rule:** Inform each step that is being executed.
+
 ### 1. Install playwright and its dependencies
 
 Run `scripts/install_playwright.sh` to setup playwright:
@@ -32,9 +34,23 @@ Run `scripts/create_project_structure.sh`:
 
 Read `assets/project-structure-template.md` to confirm that the correct project structure based on test type was created.
 
-**Golden rule:** Do not create any extra folder or file after review `assets/project-structure-template.md`.
+**Golden rule:** Only create folders and files that were explicited mention in previous steps `assets/project-structure-template.md` AND do not update README and do not remove any file (only if explicit asked).
 
-Review the installation in `evals/evals.json` `create-structure-request`.
+Review installation in `evals/evals.json` `create-structure-request`.
+
+Update `playwright.config.ts` file to use "testDir: `.src/tests'` instead of `testDir: './tests'`,
+
+### 3. Setup environment variables
+
+Run `scripts/setup_env_variables.sh`:
+- Install dotenv and @types/dotenv
+- Create .env.example file
+
+**Golden rule:** Only create file related to `assets/.env.example.template` AND do not update README AND do not remove any file (only if explicit asked).
+
+Read `references/code.snippet.json` `dotenv` and update `playwright.config.ts` with dotenv code usage and do not remove any previous settings present in the file, ONLY integrate dotenv configuration.
+
+Review installation in `eval/evals.json` `setup-env-var-request`.
 
 <!-- ### 3. Check example test with project structure
 

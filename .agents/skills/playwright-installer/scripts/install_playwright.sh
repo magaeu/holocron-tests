@@ -8,6 +8,7 @@ readonly playwright_bin="./node_modules/.bin/playwright"
 readonly -a install_command=(npm init playwright@latest -- --quiet --lang TypeScript)
 readonly -a update_command=(npm install -D @playwright/test@latest)
 readonly -a install_dependencies_command=(npx playwright install --with-deps)
+readonly -a install_cli_command=(npm install -D @playwright/cli@latest)
 readonly -a install_typescript_command=(npm install --save-dev typescript)
 readonly -a run_test_command=(npx playwright test)
 readonly -a check_installed_version_command=(npx playwright --version)
@@ -59,6 +60,14 @@ install_playwright_dependencies() {
 }
 
 ### -----------
+### Install Playwright cli to enable AI coding agents.
+### -----------
+install_playwright_dependencies() {
+  run_step 'Installing Playwright browser dependencies' \
+    "${install_cli_command[@]}"
+}
+
+### -----------
 ### Install typescript
 ### -----------
 install_typescript() {
@@ -96,6 +105,7 @@ main() {
   else
     install_playwright || return 1
     install_playwright_dependencies || return 1
+    install_playwright_cli || return 1
     install_typescript || return 1
     run_playwright_example || return 1
   fi

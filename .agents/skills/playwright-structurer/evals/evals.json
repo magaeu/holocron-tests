@@ -1,0 +1,20 @@
+{
+  "skill": "playwright-structurer",
+  "evals": [
+    {
+      "id": "create-structure-request",
+      "prompt": "Create structure for playwright project",
+      "expected_output": "Folders and files for scalable structure",
+      "assertions": [
+        "playwright is installed",
+        "src (src) folder is created",
+        "common folders are created (fixtures, tests and utils)",
+        "pages and components folders are created in case UI project",
+        "api folder is created in case API project",
+        "pages, components and api folders are created in case UI and API project",
+        "package.json, playwright.config.ts and tsconfig.json files are created",
+        "only folders related to task were created"
+      ]
+    }
+  ]
+}

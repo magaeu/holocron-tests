@@ -26,4 +26,12 @@ Read `references/project-structure-template.md` to confirm that correct project 
 
 Review installation in `evals/evals.json` `create-structure-request`.
 
+### 2. Update existing files
+
 Update `playwright.config.ts` file to use "testDir: `.src/tests'` instead of `testDir: './tests'`.
+
+Update `playwright.config.ts` file `use` with `playwright.config.ts.template`.
+
+Update `playwright.config.ts` file `reporter` with `playwright.config.ts.template`.
+
+Check if files were up-to-date correctly.

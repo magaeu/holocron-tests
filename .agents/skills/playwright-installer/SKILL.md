@@ -14,8 +14,9 @@ Create or update playwright with dependencies
 
 ### 1. Install playwright and its dependencies
 
-Run `scripts/install_playwright.sh` to setup playwright:
-- **Playwright** installation (latest stable version) - local
+Run `scripts/install_playwright.sh` to setup playwright localy:
+- **Playwright** installation (latest stable version)
+- **Playwright cli** installation (latest stable version)
 - **Dependencies** (browsers) - local
 - Install Typescript - local
 - Initialize playwright
@@ -24,23 +25,7 @@ Run `scripts/install_playwright.sh` to setup playwright:
 
 Review the installation in `evals/evals.json` `install-request`.
 
-### 2. Create project structure based on test type
-
-Run `scripts/create_project_structure.sh`:
-- Prompts for UI, REST API, or both.
-- Creates the common `src/fixtures`, `src/tests`, `src/types`, and `src/utils` directories.
-- Creates `src/pages` and `src/components` for UI testing, and `src/api` for REST API testing.
-- Creates `playwright.config.ts`, `tsconfig.json`, and `package.json` only when they do not already exist.
-
-Read `assets/project-structure-template.md` to confirm that correct project structure based on test type was created.
-
-**Golden rule:** Only create folders and files that were explicited mention in previous steps `assets/project-structure-template.md` AND do not update README and do not remove any file (only if explicit asked).
-
-Review installation in `evals/evals.json` `create-structure-request`.
-
-Update `playwright.config.ts` file to use "testDir: `.src/tests'` instead of `testDir: './tests'`.
-
-### 3. Setup environment variables
+### 2. Setup environment variables
 
 Run `scripts/setup_env_variables.sh`:
 - Install dotenv and @types/dotenv

@@ -62,7 +62,7 @@ install_playwright_dependencies() {
 ### -----------
 ### Install Playwright cli to enable AI coding agents.
 ### -----------
-install_playwright_dependencies() {
+install_playwright_cli() {
   run_step 'Installing Playwright browser dependencies' \
     "${install_cli_command[@]}"
 }

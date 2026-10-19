@@ -104,6 +104,6 @@ Phase 4's proposal **must** carry a 1-10 confidence. The number tells you what t
 | -------------- | -------------------------- |
 | playwright-installer      | install playwright and its dependencies                  |
 | playwright-structurer   | create scaffold folders for UI and/or REST Api applications                   |
-| integrator       | setup CI/CD flows      |
+| playwright-integrator       | setup CI/CD flows      |
 | dockerizer    | create and config docker file |
 | coder  | create basic scaffold files based on application              |

@@ -1,0 +1,45 @@
+name: 'Setup ci'
+description: 'Install node, dependencies and browsers and cache them'
+inputs:
+    cache-dependencies:
+        description: 'Cache dependencies'
+        required: false
+        default: 'true'
+    cache-browsers:
+        description: 'Cache browsers'
+        required: false
+        default: 'true'
+runs:
+    using: 'composite'
+    steps:
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+              node-version: lts/*
+
+        - name: Cache Dependencies
+          if: inputs.cache-dependencies == 'true'
+          id: cache-dependencies
+          uses: actions/cache@v4
+          with:
+              path: node_modules
+              key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+        - name: Install dependencies
+          if: steps.cache-dependencies.outputs.cache-hit != 'true' || inputs.cache-dependencies != 'true'
+          shell: bash
+          run: npm ci
+
+        - name: Cache Playwright Browsers
+          if: inputs.cache-browsers == 'true'
+          id: cache-browsers
+          uses: actions/cache@v4
+          with:
+              path: ~/.cache/ms-playwright
+              key: playwright-browsers-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+        - name: Install Playwright Browsers
+          if: steps.cache-browsers.outputs.cache-hit != 'true' || inputs.cache-browsers != 'true'
+          shell: bash
+          run: npx playwright install --with-deps firefox
+

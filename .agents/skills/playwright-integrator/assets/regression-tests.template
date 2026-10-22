@@ -1,0 +1,16 @@
+name: Run regression tests
+description: Run the complete Playwright test suite
+
+runs:
+  using: composite
+  steps:
+    - name: Run regression tests
+      id: regression
+      shell: bash
+      run: npm run regression:test
+
+    - name: Upload Playwright report
+      if: always()
+      uses: ./.github/actions/report
+      with:
+        test-type: regression

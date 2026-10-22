@@ -1,0 +1,31 @@
+{
+  "skill": "playwright-integrator",
+  "evals": [
+    {
+      "id": "create-pipeline-folders-request",
+      "prompt": "create pipeline folder",
+      "expected_output": ".github/workflows and .github/actions folders are created",
+      "assertions": [
+        ".github/workflows folder is created and empty",
+        "github/actions/setup-ci folder is created and empty",
+        "github/actions/smoke-tests folder is created and empty",
+        "github/actions/sanity-tests folder is created and empty",
+        "github/actions/regression-tests folder is created and empty",
+        "github/actions/report folder is created and empty"
+      ]
+    },
+    {
+      "id": "create-pipeline-files-request",
+      "prompt": "create pipeline files",
+      "expected_output": "workflows and actions files are created",
+      "assertions": [
+        ".github/workflows/test-runner.yml file is created",
+        "github/actions/setup-ci/actions.yml file is created",
+        "github/actions/smoke-tests/actions.yml file is created",
+        "github/actions/sanity-tests/actions.yml file is created",
+        "github/actions/regression-tests/actions.yml file is created",
+        "github/actions/report/actions.yml is created"
+      ]
+    }
+  ]
+}

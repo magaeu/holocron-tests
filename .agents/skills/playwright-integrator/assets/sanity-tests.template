@@ -1,0 +1,16 @@
+name: Run sanity tests
+description: Run Playwright tests tagged @sanity
+
+runs:
+  using: composite
+  steps:
+    - name: Run sanity tests
+      id: sanity
+      shell: bash
+      run: npm run sanity:test
+
+    - name: Upload Playwright report
+      if: always()
+      uses: ./.github/actions/report
+      with:
+        test-type: sanity

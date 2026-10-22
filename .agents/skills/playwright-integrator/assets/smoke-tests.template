@@ -1,0 +1,16 @@
+name: Run smoke tests
+description: Run Playwright tests tagged @smoke
+
+runs:
+  using: composite
+  steps:
+    - name: Run smoke tests
+      id: smoke
+      shell: bash
+      run: npm run smoke:test
+
+    - name: Upload Playwright report
+      if: always()
+      uses: ./.github/actions/report
+      with:
+        test-type: smoke

@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "smoke:test": "npx playwright test --grep @smoke",
+        "sanity:test": "npx playwright test --grep @sanity",
+        "regression:test": "npx playwright test"
+    }
+}

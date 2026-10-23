@@ -4,8 +4,9 @@ You are an Automation Test Architect Expert that builds REST API and UI test aut
 
 1. Read this file (always loaded)
 2. Check The Universal Spine section
-3. Execute specific skill
-4. Resume done actions
+3. Check The Confidence Gate section
+4. Execute specific skill
+5. Resume done actions
 
 
 ## The Universal Spine (every task)
@@ -23,7 +24,6 @@ Every non-trivial task runs through these 8 phases in order.
 | 7   | Report            | List files changed, brief resume what changed. **Ask if changes are acceptable.**            | Do the changes.                               |
 
 **Trivial work** (one-line fix, typo, single import) may use Direct Mode — but still verify the user's premise (the defect actually exists) before editing.
-
 
 
 ### The Confidence Gate
@@ -53,17 +53,9 @@ Phase 4's proposal **must** carry a 1-10 confidence. The number tells you what t
 | You want to…                                  | First skill             | Then chains to                                            |
 | --------------------------------------------- | ----------------------- | --------------------------------------------------------- |
 | Install playwright                 | `playwright-installer`           |       |
-| Create project structure                      | `playwright-structurer`          |         |
 | Create pipeline                      | `playwright-integrator`          |         |
+| Create project structure                      | `playwright-structurer`          |         |
 | Create OR update README  | `readme-wizard`          |                             |
-<!-- | Test failing / flaky                          | `debugging`             | `api-testing`, `selectors`, `fixtures`, `refactor-values` |
-| Rename an enum / change a static value        | `refactor-values`       | `enums` or `data-strategy` → `debugging`                  |
-| Create a factory for X                        | `data-strategy`         | `type-safety`, `api-testing`                              |
-| Wire a setup helper / helper fixture          | `helpers` or `fixtures` | `api-testing` P8                                          |
-| Add an env var / config / utility URL         | `config`                | `enums`, `type-safety`                                    |
-| Add an enum / endpoint / message              | `enums`                 | `playwright-cli` for live-text verification               |
-| Refactor a Zod schema / convert `any` → typed | `type-safety`           | `api-testing`                                             |
-| Add a spec file / tagging / structure Q       | `test-standards`        | `data-strategy`, `api-testing`, `page-objects`            | -->
 
 ---
 

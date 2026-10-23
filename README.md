@@ -10,7 +10,7 @@ Reusable agent skills for setting up and building Playwright test projects.
 
 ## What is this?
 
-This repository contains agent skills for Playwright-based UI and API test automation. The skills cover installing Playwright, scaffolding a test project, designing an advanced E2E framework, and setting up GitHub Actions workflows.
+This repository contains agent skills for Playwright-based UI and API test automation. The skills cover installing Playwright, scaffolding a test project, designing an advanced automation framework, and setting up GitHub Actions workflows.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ git clone https://github.com/magaeu/holocron-tests.git
 cd holocron-tests
 ```
 
-Ask Copilot for the task you want to do, such as installing Playwright or creating a UI and API project structure. Skill instructions and supporting files are under `.agents/skills/`.
+Ask agent for the task you want to do, such as installing Playwright or creating a UI and API project structure. Skill instructions and supporting files are under `.agents/skills/`.
 
 ## Skills
 
@@ -29,6 +29,7 @@ Ask Copilot for the task you want to do, such as installing Playwright or creati
 |-------|---------|
 | [playwright-installer](.agents/skills/playwright-installer/SKILL.md) | Install Playwright, browsers, TypeScript, and environment-variable support. |
 | [playwright-structurer](.agents/skills/playwright-structurer/SKILL.md) | Scaffold folders and configuration for UI, REST API, or combined test projects. |
+| [playwright-integrator](.agents/skills/playwright-integrator/SKILL.md) | Sets up GitHub Actions workflows for smoke, sanity, and regression tests. |
 | [playwright-wizard](.agents/skills/playwright-wizard/SKILL.md) | Route Playwright automation requests to the appropriate skill and workflow. |
 | [readme-wizard](.agents/skills/readme-wizard/SKILL.md) | Generate or improve a project README using repository details. |
 
@@ -39,6 +40,7 @@ Ask Copilot for the task you want to do, such as installing Playwright or creati
 ├── .agents/
 │   └── skills/
 │       ├── playwright-installer/
+│       ├── playwright-integrator/
 │       ├── playwright-structurer/
 │       ├── playwright-wizard/
 │       └── readme-wizard/
@@ -50,6 +52,10 @@ Ask Copilot for the task you want to do, such as installing Playwright or creati
 ```
 
 Each skill directory contains a `SKILL.md` with its instructions. Installer and scaffolder skills also include scripts, templates, and references.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 #### Disclaimer
 
